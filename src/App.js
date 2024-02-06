@@ -1,9 +1,7 @@
 import { useState } from "react";
-
+import AuthPage from "./Pages/AuthPage/AuthPage";
+import ChatsPage from "./Pages/ChatsPage/ChatsPage";
 import "./App.css";
-
-import AuthPage from "./AuthPage";
-import ChatsPage from "./ChatsPage";
 
 function App() {
   const [user, setUser] = useState(undefined);

@@ -1,0 +1,30 @@
+import "./AuthPage.scss";
+import axios from "axios";
+
+const AuthPage = (props) => {
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const { value } = e.target[0];
+    axios
+      .post("http://localhost:3001/authenticate", { username: value })
+      .then((r) => props.onAuth({ ...r.data, secret: value }))
+      .catch((e) => console.log("error", e));
+  };
+  return (
+    <div className="background">
+      <form onSubmit={onSubmit} className="form__card">
+        <div className="form__title">Welcome</div>
+        <div className="form__subtitle"> Set a username to get started</div>
+        <div className="auth">
+          <div className="auth__label"> Username</div>
+          <input className="auth__input" name="username"></input>
+          <button className="auth__button" type="submit">
+            Enter
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default AuthPage;
